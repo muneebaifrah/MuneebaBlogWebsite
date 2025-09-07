@@ -15,6 +15,7 @@ header {
 nav ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 nav ul li {
@@ -41,6 +42,11 @@ main {
 
 .add-blog h3, .blog-list h3 {
     color: #333;
+}
+
+.blog-entry {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
 }
 
 footer {
