@@ -1,29 +1,36 @@
-const form = document.getElementById('add-blog-form');
-const blogEntries = document.getElementById('blog-entries');
+// Run only after DOM is loaded
+document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('add-blog-form');
+    const blogEntries = document.getElementById('blog-entries');
 
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
+    if (!form || !blogEntries) return; // safety check
 
-    const title = document.getElementById('blog-title').value;
-    const content = document.getElementById('blog-content').value;
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
 
-    // Create a new blog entry element
-    const blogEntry = document.createElement('div');
-    blogEntry.classList.add('blog-entry');
+        const title = document.getElementById('blog-title').value.trim();
+        const content = document.getElementById('blog-content').value.trim();
 
-    const blogTitle = document.createElement('h3');
-    blogTitle.textContent = title;
+        if (!title || !content) return; // prevent empty posts
 
-    const blogContent = document.createElement('p');
-    blogContent.textContent = content;
+        // Create a new blog entry element
+        const blogEntry = document.createElement('div');
+        blogEntry.classList.add('blog-entry');
 
-    // Append title and content to the blog entry
-    blogEntry.appendChild(blogTitle);
-    blogEntry.appendChild(blogContent);
+        const blogTitle = document.createElement('h3');
+        blogTitle.textContent = title;
 
-    // Add the new blog entry to the list
-    blogEntries.appendChild(blogEntry);
+        const blogContent = document.createElement('p');
+        blogContent.textContent = content;
 
-    // Clear the form
-    form.reset();
+        // Append title and content to the blog entry
+        blogEntry.appendChild(blogTitle);
+        blogEntry.appendChild(blogContent);
+
+        // Add the new blog entry to the list
+        blogEntries.appendChild(blogEntry);
+
+        // Clear the form
+        form.reset();
+    });
 });
